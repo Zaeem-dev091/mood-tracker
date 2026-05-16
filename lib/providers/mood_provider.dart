@@ -18,27 +18,12 @@ class MoodProvider extends ChangeNotifier {
     _selectedMood = mood;
   }
 
-  void logMoodDirectly(Mood mood) {
+  void logMood(Mood mood) {
     final entry = MoodEntry(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       mood: mood,
       date: DateTime.now(),
     );
-    _entries.add(entry);
-    _selectedMood = null;
-    notifyListeners();
-  }
-
-  void logMood({String? note}) {
-    if (_selectedMood == null) return;
-
-    final entry = MoodEntry(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      mood: _selectedMood!,
-      date: DateTime.now(),
-      note: note,
-    );
-
     _entries.add(entry);
     _selectedMood = null;
     notifyListeners();
